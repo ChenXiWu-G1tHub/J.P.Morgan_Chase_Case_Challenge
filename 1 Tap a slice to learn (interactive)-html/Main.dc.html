@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Spending distribution</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}*{box-sizing:border-box}
+.s{width:390px;height:844px;overflow:hidden;background:#F3F5F7;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#0F2A43;padding:52px 20px 20px;display:flex;flex-direction:column;gap:10px}
+.h{font-size:23px;font-weight:700;margin:0;letter-spacing:-.4px}.sub{font-size:13px;color:#4A5D70;margin:0}
+.c{background:#fff;border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.t{font-size:13px;color:#4A5D70;margin:0;line-height:1.4}.b{font-size:15px;font-weight:600;margin:0}
+.btn{min-height:48px;border:0;border-radius:12px;background:#0F2A43;color:#fff;font-size:16px;font-weight:600;font-family:inherit;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.chip{min-height:44px;border:1.5px solid #0B7A75;color:#0B5F5B;background:#fff;border-radius:12px;font-size:13px;font-weight:600;font-family:inherit;padding:6px 10px}
+.tag{display:inline-block;align-self:flex-start;background:#E3F3F1;color:#0B5F5B;font-size:12px;font-weight:600;border-radius:8px;padding:3px 8px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.lg{min-height:44px;display:flex;align-items:center;gap:8px;border:1.5px solid #DCE3EA;border-radius:10px;background:#fff;font-family:inherit;font-size:13px;color:#0F2A43;padding:4px 8px;width:100%;text-align:left}
+.lg b{margin-left:auto}.sw{width:12px;height:12px;border-radius:4px;flex:none}
+.bub{position:relative;background:#fff;border:1.5px solid #0B7A75;border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;margin-top:6px}
+.bub:before{content:"";position:absolute;top:-8px;left:50%;margin-left:-7px;width:12px;height:12px;background:#fff;border-left:1.5px solid #0B7A75;border-top:1.5px solid #0B7A75;transform:rotate(45deg)}
+.tg{min-height:44px;display:flex;align-items:center;gap:8px;border:0;background:none;font-family:inherit;font-size:13px;font-weight:600;color:#0F2A43;padding:0}
+.n{width:26px;height:26px;border-radius:13px;background:#0F2A43;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+</style>
+</helmet>
+<div class="s" style="position: relative">
+<div style="position:absolute;left:0;top:0;width:390px;height:48px;background:#4a5d70;display:flex;align-items:center;justify-content:center"><div style="background:#fff;border-radius:8px;overflow:hidden;height:36px"><img src="./assets/d28b54016e300d43e6a50e12121ad738.png" alt="Chase" style="height:36px;width:auto;display:block"></div></div><div class="row" style="align-items:flex-start"><div><p class="sub">October spending</p><h1 class="h">Where your money goes</h1></div>
+<button class="tg" role="switch" aria-checked="{{ sugAttr }}" aria-label="Show investing suggestion" onClick="{{ toggle }}"><span>Suggest</span><span style="{{ trk }}"><span style="{{ knob }}"></span></span></button></div>
+<div class="c" style="padding:8px 14px"><svg viewBox="0 0 200 200" width="180" height="180" role="img" aria-label="Spending distribution donut chart. Tap a slice to learn about it." style="align-self:center"><circle cx="100" cy="100" r="70" fill="none" stroke="#0F2A43" stroke-width="{{ s0.sw }}" stroke-dasharray="{{ s0.dash }}" stroke-dashoffset="{{ s0.off }}" opacity="{{ s0.op }}" transform="rotate(-90 100 100)" onClick="{{ s0.pick }}" style="cursor:pointer"></circle><circle cx="100" cy="100" r="70" fill="none" stroke="#E0A030" stroke-width="{{ s1.sw }}" stroke-dasharray="{{ s1.dash }}" stroke-dashoffset="{{ s1.off }}" opacity="{{ s1.op }}" transform="rotate(-90 100 100)" onClick="{{ s1.pick }}" style="cursor:pointer"></circle><circle cx="100" cy="100" r="70" fill="none" stroke="#0B7A75" stroke-width="{{ s2.sw }}" stroke-dasharray="{{ s2.dash }}" stroke-dashoffset="{{ s2.off }}" opacity="{{ s2.op }}" transform="rotate(-90 100 100)" onClick="{{ s2.pick }}" style="cursor:pointer"></circle><circle cx="100" cy="100" r="70" fill="none" stroke="#6F8AA6" stroke-width="{{ s3.sw }}" stroke-dasharray="{{ s3.dash }}" stroke-dashoffset="{{ s3.off }}" opacity="{{ s3.op }}" transform="rotate(-90 100 100)" onClick="{{ s3.pick }}" style="cursor:pointer"></circle><circle cx="100" cy="100" r="70" fill="none" stroke="#7CC4BE" stroke-width="{{ s4.sw }}" stroke-dasharray="{{ s4.dash }}" stroke-dashoffset="{{ s4.off }}" opacity="{{ s4.op }}" transform="rotate(-90 100 100)" onClick="{{ s4.pick }}" style="cursor:pointer"></circle><circle cx="100" cy="100" r="70" fill="none" stroke="#B7C3CF" stroke-width="{{ s5.sw }}" stroke-dasharray="{{ s5.dash }}" stroke-dashoffset="{{ s5.off }}" opacity="{{ s5.op }}" transform="rotate(-90 100 100)" onClick="{{ s5.pick }}" style="cursor:pointer"></circle><circle cx="100" cy="100" r="70" fill="none" stroke="#B5372E" stroke-width="{{ s6.sw }}" stroke-dasharray="{{ s6.dash }}" stroke-dashoffset="{{ s6.off }}" opacity="{{ s6.op }}" transform="rotate(-90 100 100)" onClick="{{ s6.pick }}" style="cursor:pointer"></circle><text x="100" y="96" text-anchor="middle" font-size="12" fill="#4A5D70">This month</text><text x="100" y="118" text-anchor="middle" font-size="22" font-weight="700" fill="#0F2A43">£1,240</text></svg></div>
+<div class="bub"><span class="tag">{{ bub.tag }}</span><p class="b">{{ bub.title }}</p><p class="t">{{ bub.body }}</p>
+<sc-if value="{{ bub.idea }}" hint-placeholder-val="{{ false }}"><a href="Planner.dc.html" style="font-size:13px;font-weight:600;color:#0B5F5B;min-height:32px;display:flex;align-items:center">See an investment idea for this</a></sc-if></div>
+<div class="g"><sc-for list="{{ legend }}" as="it" hint-placeholder-count="6"><button class="lg" style="{{ it.style }}" onClick="{{ it.pick }}"><span class="sw" style="{{ it.sw }}"></span><span>{{ it.name }}</span><b>{{ it.pct }}%</b></button></sc-for></div></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(p){super(p);this.state={sel:null,sug:false};}
+renderVals(){
+const sug=this.state.sug,sel=this.state.sel,C=439.82;
+const col=["#0F2A43","#E0A030","#0B7A75","#6F8AA6","#7CC4BE","#B7C3CF","#B5372E"];
+const off=[["Groceries",30,372],["Shopping",20,248],["Eating out & coffee",18,223],["Transport",14,174],["Subscriptions",8,99],["Other",10,124]];
+const on=[["Groceries",30,372],["Shopping",16,198],["Eating out & coffee",15,183],["Transport",14,174],["Subscriptions",6,79],["Other",7,84],["Investing",12,150]];
+const I={"Groceries": ["Food shops are companies you could own", "People buy food in good times and bad, so this area is often called steady. A fund can hold many food and household companies, giving you small slices of firms you already pay every week.", true], "Shopping": ["Shops depend on confidence", "When people feel less sure they often buy less, so retail company values can swing more. Spreading money across many sectors reduces the effect of one slump.", false], "Eating out & coffee": ["Small habits, big maths", "A regular coffee is a repeating payment. Investing a small amount regularly uses the same habit, and returns can build on earlier returns. That is compounding.", false], "Transport": ["Travel is a chain of companies", "Fuel, carmakers, rail and airlines are different businesses with different risks. A fund spreads your money across many instead of betting on one.", false], "Subscriptions": ["A subscription is a standing order", "You already pay monthly without thinking. Auto-investing works the same way: a fixed amount on a fixed day, so you don't have to time the market.", false], "Other": ["Not every pound has a label", "Spending you can't categorise is often the easiest place to find a small amount to invest.", false], "Investing": ["This is you becoming an owner", "Your \u00a3150 goes into a pot, which holds a fund, which owns small slices of many companies. Value can rise or fall. Only invest money you won't need for a few years. Funded by trimming shopping \u00a350, eating out \u00a340, subscriptions \u00a320, other \u00a340.", false]};
+const list=sug?on:off;let o=0;const out={};
+const ss=list.map((x,i)=>{const L=C*x[1]/100;const r={dash:(L-2).toFixed(1)+" "+(C-L+2).toFixed(1),off:(-o).toFixed(1),sw:sel===x[0]?30:24,op:(sel&&sel!==x[0])?0.3:1,pick:()=>this.setState({sel:x[0]})};o+=L;return r;});
+for(let i=0;i<7;i++){out["s"+i]=ss[i]||{dash:"0 440",off:"0",sw:24,op:1,pick:()=>{}};}
+out.legend=list.map((x,i)=>({name:x[0],pct:x[1],sw:"background:"+col[i],style:sel===x[0]?"border-color:#0F2A43;background:#EEF2F6":"",pick:()=>this.setState({sel:x[0]})}));
+if(sel&&I[sel]){const a=list.filter(x=>x[0]===sel)[0];out.bub={tag:sel+" · "+a[1]+"% · £"+a[2],title:I[sel][0],body:I[sel][1],idea:I[sel][2]};}
+else out.bub={tag:"Tap to learn",title:"Tap any slice to see what it means",body:"Each part of your spending links to companies you already use. Tap one to learn how investing connects to it. Switch on Suggest to see investing in your budget.",idea:false};
+out.toggle=()=>this.setState({sug:!sug,sel:sug?null:"Investing"});
+out.sugAttr=sug?"true":"false";
+out.trk="width:44px;height:26px;border-radius:13px;position:relative;flex:none;background:"+(sug?"#0B7A75":"#8795A4");
+out.knob="position:absolute;top:3px;width:20px;height:20px;border-radius:10px;background:#fff;left:"+(sug?21:3)+"px";
+return out;}
+}
+</script>
+</body>
+</html>
